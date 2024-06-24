@@ -6,7 +6,7 @@
 /*   By: bvelasco <bvelasco@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 22:09:22 by bvelasco          #+#    #+#             */
-/*   Updated: 2024/06/19 15:42:42 by bvelasco         ###   ########.fr       */
+/*   Updated: 2024/06/25 00:41:00 by bvelasco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	get_varname_len(char *str)
 	i = 0;
 	if (str[i++] != '$')
 		return (0);
-	if (str[i] == '?')
+	if (str[i] == '?' || ft_isdigit(str[i]))
 		return (2);
 	if (!ft_isalnum(str[i]))
 		return (1);

@@ -6,7 +6,7 @@
 /*   By: bvelasco <bvelasco@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 17:49:21 by bvelasco          #+#    #+#             */
-/*   Updated: 2024/06/23 19:10:48 by bvelasco         ###   ########.fr       */
+/*   Updated: 2024/06/25 00:39:52 by bvelasco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,17 @@ int	main(int argc, char *argv[], char *envp[])
 	char	*rawline;
 	int		status;
 
+	if (argc == 2)
+	{
+		if (!ft_strncmp(argv[1], "--version", 10))
+		{
+			printf("conchita 1.0 by bvelasco & dximenez\nmainteined by:bvelasco\n");
+			exit(0);
+		}
+	}
 	((void) argc, (void) argv, signals_tty(), get_cwd());
 	env = parse_env(envp);
-	rawline = readline("minishell: ");
+	rawline = readline("conchita$ ");
 	while (rawline)
 	{
 		if (rawline[0] != 0)
@@ -81,7 +89,7 @@ int	main(int argc, char *argv[], char *envp[])
 			}
 		}
 		free(rawline);
-		rawline = readline("minishell: ");
+		rawline = readline("conchita$ ");
 	}
 	return (ft_lstclear_type(&env, clear_env_list), 0);
 }

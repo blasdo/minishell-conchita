@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_token.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dximenez <dximenez@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: bvelasco <bvelasco@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 00:30:51 by dximenez          #+#    #+#             */
-/*   Updated: 2024/06/19 01:00:21 by dximenez         ###   ########.fr       */
+/*   Updated: 2024/06/24 21:03:42 by bvelasco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static size_t	get_real_token_size(t_list *env, char *rawtoken)
 		}
 		else if (rawtoken[i] == '$')
 		{
-			varname = get_varname(rawtoken);
+			varname = get_varname(rawtoken + i);
 			len += get_env_var_len(env, varname);
 			i += get_varname_len(rawtoken + i);
 			free(varname);
