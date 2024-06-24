@@ -1,4 +1,4 @@
-NAME = minishell
+NAME = conchita
 
 SRCS 				=	src/parser/environment.c\
 						src/parser/token.c \

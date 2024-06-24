@@ -1,4 +1,5 @@
 *.o
 minishell
+conchita
 .devcontainer
 .vscode
