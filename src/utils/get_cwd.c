@@ -6,7 +6,7 @@
 /*   By: dximenez <dximenez@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 15:30:29 by dximenez          #+#    #+#             */
-/*   Updated: 2024/06/23 16:40:47 by dximenez         ###   ########.fr       */
+/*   Updated: 2024/06/25 11:47:24 by bvelasco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*get_cwd(void)
 
 	if (getcwd(_cwd, PATH_MAX) == NULL)
 	{
-		if (_cwd != NULL)
+		if (*_cwd != '\0')
 			return (cwd);
 		return (NULL);
 	}
