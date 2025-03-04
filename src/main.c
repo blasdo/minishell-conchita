@@ -6,7 +6,7 @@
 /*   By: bvelasco <bvelasco@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 17:49:21 by bvelasco          #+#    #+#             */
-/*   Updated: 2024/06/25 00:39:52 by bvelasco         ###   ########.fr       */
+/*   Updated: 2025/03/04 23:42:57 by bvelasco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,21 @@ int	ft_wexitstatus(int raw_status)
 	return ((raw_status & 0xFF00) >> 8);
 }
 
+void	args_hand(int argc, char **argv)
+{
+	if (argc > 2)
+	{
+		printf("To many args\n");
+		exit(1);
+	}
+	if (argc == 2)
+	{
+		if (ft_strncmp(argv[1], "-v", 3)
+			|| ft_strncmp(argv[1], "--version", 11))
+			printf("Conchita %s by %s under %s", COPYRIGHT, DEVS, LICENSE);
+	}
+}
+
 int	main(int argc, char *argv[], char *envp[])
 {
 	t_list	*env;
@@ -64,15 +79,7 @@ int	main(int argc, char *argv[], char *envp[])
 	char	*rawline;
 	int		status;
 
-	if (argc == 2)
-	{
-		if (!ft_strncmp(argv[1], "--version", 10))
-		{
-			printf("conchita 1.0 by bvelasco & dximenez\nmainteined by:bvelasco\n");
-			exit(0);
-		}
-	}
-	((void) argc, (void) argv, signals_tty(), get_cwd());
+	(signals_tty(), get_cwd(), args_hand(argc, argv));
 	env = parse_env(envp);
 	rawline = readline("conchita$ ");
 	while (rawline)

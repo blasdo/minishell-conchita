@@ -6,7 +6,7 @@
 /*   By: bvelasco <bvelasco@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 14:01:24 by bvelasco          #+#    #+#             */
-/*   Updated: 2024/06/23 18:27:23 by bvelasco         ###   ########.fr       */
+/*   Updated: 2025/03/04 23:32:30 by bvelasco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,9 @@
 # include "parser.h"
 # include "cleaners.h"
 # include "builtins.h"
-
+# define COPYRIGHT "(C)2024-25"
+# define DEVS "dximenez- y bvelasco"
+# define LICENSE "BSD 3 Clauses license"
 //FDS
 enum
 {
