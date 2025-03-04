@@ -41,25 +41,29 @@ LIBFT_LIB_PATH		= $(LIBFT_PATH)/lib
 LIBFT_LIB_FILE		= $(LIBFT_LIB_PATH)/libft.a
 LIBFT_INC_FLAGS		= -I$(LIBFT_INC_PATH)
 LIBFT_LINK_FLAGS	= -L$(LIBFT_LIB_PATH) -lft
-CFLAGS 				= $(LIBFT_INC_FLAGS)
-CC					= gcc -Wall -Wextra -Werror  -Iincludes
+CFLAGS 				= -Wall -Wextra -Werror -Iincludes $(LIBFT_INC_FLAGS)
+CC					= cc
 
 all:	$(NAME)
 
-
-$(NAME):	$(LIBFT_LIB_FILE) $(OBJS)
-		$(CC) $(OBJS) -o $(NAME) $(LIBFT_LINK_FLAGS) -lreadline
+$(NAME):	.submodules $(LIBFT_LIB_FILE) $(OBJS)
+		$(CC) $(OBJS) -o $(NAME) $(LIBFT_LINK_FLAGS) $(LDFLAGS) -lreadline
 
 clean:
 	rm -f $(OBJS)
 	make -C libft fclean
+	rm -f .submodules
 
 fclean:	clean
 	rm -f $(NAME)
 
 re:		fclean all
 
+.submodules:
+	git submodule init; git submodule update
+	touch .submodules
+
 deps: $(LIBFT)
 
-$(LIBFT_LIB_FILE):
+$(LIBFT_LIB_FILE): .submodules
 	make -C libft

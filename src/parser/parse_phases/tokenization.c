@@ -68,7 +68,7 @@ static size_t	create_token(t_list *env, char *start, size_t len,
 	tok->type = identify_token_type(substr);
 	tok->value = expand_token(env, tok->type, substr);
 	free(substr);
-	if ((tok->type == IN))
+	if (tok->type == IN)
 		return (printf("Invalid redir\n"), free(tok->value), free(tok), 1);
 	if (!tok->value)
 		return (free(tok), 1);
